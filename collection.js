@@ -50,28 +50,3 @@ var Collection = function() {
       return ret;
     } }; // end return
 }; // end Collection
-
-/**
- * TaskCollection inherits from Collection
- * 
- * @returns
- */
-var TaskCollection = function() {
-  this.unselectAll = function() {
-    for (i in tc.getClass('selected')) {
-      task = tc.getItem(i);
-      task.getContainer().removeClass('selected');
-    }
-  };
-
-  this.stopAll = function() {
-    // Stop all the tasks (only in the client side)
-    for ( var i in tc.getAll()) {
-      tc.getItem(i).stop(false);
-    }
-  };
-};
-// Inheritance definition:
-TaskCollection.prototype = new Collection();
-TaskCollection.prototype.constructor = TaskCollection;
-TaskCollection.prototype.Item = 'Task';
